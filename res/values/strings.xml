@@ -9,9 +9,15 @@
     <string name="action_info">Info</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Moves -->
+    <string name="best_moves_key">Best</string>
+    <string name="best_moves">Best</string>
+    <string name="current_moves">Moves</string>
+
     <!-- Preferences: Board Size -->
     <string name="board_size_big">4 X 4</string>
     <string name="board_size_default">3</string>
+    <string name="board_size_huge">5 X 5</string>
     <string name="board_size_key">Board Size</string>
     <string name="board_size_small">3 X 3</string>
     <string name="board_size_summary">Click to choose the board size</string>
@@ -20,10 +26,12 @@
     <string-array name="board_size_entries">
         <item>@string/board_size_small</item>
         <item>@string/board_size_big</item>
+        <item>@string/board_size_huge</item>
     </string-array>
     <string-array name="board_size_values">
         <item>3</item>
         <item>4</item>
+        <item>5</item>
     </string-array>
 
     <!-- Info Dialog -->

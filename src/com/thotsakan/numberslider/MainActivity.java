@@ -11,11 +11,10 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.thotsakan.numberslider.gameview.GameView;
+import com.thotsakan.numberslider.ui.GameView;
 
 public class MainActivity extends Activity {
 
@@ -32,9 +31,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		LinearLayout gameBoard = (LinearLayout) findViewById(R.id.game_view);
-		gameView = new GameView(this, getBoardSize());
-		gameBoard.addView(gameView);
+		gameView = (GameView) findViewById(R.id.game_view);
+		gameView.newGame(getBoardSize());
 
 		// AdMob
 		AdView mAdView = (AdView) findViewById(R.id.ad_view);
@@ -52,7 +50,7 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_new_game:
-			gameView.newGame();
+			gameView.newGame(getBoardSize());
 			break;
 		case R.id.action_info:
 			showInfo();
@@ -72,10 +70,13 @@ public class MainActivity extends Activity {
 		dialogBuilder.setMessage(R.string.info_dialog_message);
 
 		ImageView imageView = new ImageView(this);
-		if (getBoardSize() == Integer.parseInt(getString(R.string.board_size_default))) {
+		int boardSize = getBoardSize();
+		if (boardSize == 3) {
 			imageView.setImageResource(R.drawable.ic_3by3);
-		} else {
+		} else if (boardSize == 4) {
 			imageView.setImageResource(R.drawable.ic_4by4);
+		} else {
+			imageView.setImageResource(R.drawable.ic_5by5);
 		}
 		imageView.setPadding(0, 0, 0, 30);
 		dialogBuilder.setView(imageView);
