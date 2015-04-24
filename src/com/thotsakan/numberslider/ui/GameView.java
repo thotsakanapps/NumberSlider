@@ -98,15 +98,18 @@ public class GameView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		int boardLen = Math.min(getWidth(), getHeight());
-		int tileLen = boardLen / boardSize;
+		float tileLen = boardLen / boardSize;
+
+		float originX = (getWidth() - boardLen) / 2;
+		float originY = (getHeight() - boardLen) / 2;
 
 		paintNumber.setTextSize(tileLen / 2);
 
 		for (int i = 0; i < boardSize; i++) {
 			for (int j = 0; j < boardSize; j++) {
 				if (board.tiles[i][j] != board.BLANK_TILE) {
-					float topX = j * tileLen;
-					float topY = i * tileLen;
+					float topX = j * tileLen + originX;
+					float topY = i * tileLen + originY;
 
 					rect.set(topX, topY, topX + tileLen, topY + tileLen);
 					rect.inset(5, 5);
