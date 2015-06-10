@@ -76,9 +76,10 @@ public class GameView extends View {
 
 			@Override
 			public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-				++currentMoves;
-				board.handleFling(Direction.getDirection(e1.getX(), e1.getY(), e2.getX(), e2.getY()));
-				invalidate();
+				if (board.handleFling(Direction.getDirection(e1.getX(), e1.getY(), e2.getX(), e2.getY()))) {
+					++currentMoves;
+					invalidate();
+				}
 				return super.onFling(e1, e2, velocityX, velocityY);
 			}
 		});
